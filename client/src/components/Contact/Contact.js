@@ -37,7 +37,7 @@ export default class Contact extends Component {
 
         axios.post("http://127.0.0.1:5000/", body, config)
         .then(res => {
-
+            this.setState({ confirmation: res.data });
         })
         .catch(err => {
             this.setState({ hasError: err.message });
@@ -47,7 +47,8 @@ export default class Contact extends Component {
     render() {
         const { name, email, phone, message, confirmation } = this.state;
 
-        const isEnabled = name.length > 2 && regex.test(email) && message.length > 10;
+        // Client form validation
+        const isEnabled = name.length > 2 && regex.test(email) && phone && message.length > 10;
 
         return (
             <Container>

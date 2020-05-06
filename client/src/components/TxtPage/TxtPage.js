@@ -27,8 +27,9 @@ export default class TxtPage extends Component {
                 }
             }
 
-            axios.post(`http://127.0.0.1:5000/${text}`, null, config)
+            axios.post(`http://127.0.0.1:5000/foo/${text}`, null, config)
             .then(res => {
+                console.log(res);
                 this.setState({
                     text: "",
                     result: res.data
